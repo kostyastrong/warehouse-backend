@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/warehouse.dir/main.cpp.o CMakeFiles/warehouse.dir/Product.cpp.o CMakeFiles/warehouse.dir/Shop.cpp.o CMakeFiles/warehouse.dir/Warehouse.cpp.o CMakeFiles/warehouse.dir/Application.cpp.o -o warehouse 

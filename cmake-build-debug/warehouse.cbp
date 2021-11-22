@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="warehouse"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/maincpp/CLionProjects/warehouse/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/maincpp/CLionProjects/warehouse/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/maincpp/CLionProjects/warehouse/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="warehouse">
+				<Option output="/home/maincpp/CLionProjects/warehouse/cmake-build-debug/warehouse" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/maincpp/CLionProjects/warehouse/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 warehouse"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="warehouse/fast">
+				<Option output="/home/maincpp/CLionProjects/warehouse/cmake-build-debug/warehouse" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/maincpp/CLionProjects/warehouse/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 warehouse/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/maincpp/CLionProjects/warehouse/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/maincpp/CLionProjects/warehouse/Application.cpp">
+			<Option target="warehouse"/>
+		</Unit>
+		<Unit filename="/home/maincpp/CLionProjects/warehouse/Application.h">
+			<Option target="warehouse"/>
+		</Unit>
+		<Unit filename="/home/maincpp/CLionProjects/warehouse/Product.cpp">
+			<Option target="warehouse"/>
+		</Unit>
+		<Unit filename="/home/maincpp/CLionProjects/warehouse/Product.h">
+			<Option target="warehouse"/>
+		</Unit>
+		<Unit filename="/home/maincpp/CLionProjects/warehouse/Shop.cpp">
+			<Option target="warehouse"/>
+		</Unit>
+		<Unit filename="/home/maincpp/CLionProjects/warehouse/Shop.h">
+			<Option target="warehouse"/>
+		</Unit>
+		<Unit filename="/home/maincpp/CLionProjects/warehouse/Warehouse.cpp">
+			<Option target="warehouse"/>
+		</Unit>
+		<Unit filename="/home/maincpp/CLionProjects/warehouse/Warehouse.h">
+			<Option target="warehouse"/>
+		</Unit>
+		<Unit filename="/home/maincpp/CLionProjects/warehouse/main.cpp">
+			<Option target="warehouse"/>
+		</Unit>
+		<Unit filename="/home/maincpp/CLionProjects/warehouse/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
