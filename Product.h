@@ -30,9 +30,10 @@ public:
     Product& operator=(Product other);
 
     friend void swap(Product&a, Product& b);
+    static void setCatalogue(int sz);
 
     static std::vector<std::string> names;
-    static std::unordered_map<std::string, const Product&> catalogue;
+    static std::unordered_map<std::string, Product&> catalogue;
 
     //friend class Pack;
 
@@ -50,8 +51,9 @@ private:
 
 class Pack: public Product {
 public:
+    static bool sortByComing(const Pack& a, const Pack& b);
     Pack(const Product& a, int packages, int today);
-    static int allPackages_;
+    [[nodiscard]] int dateCame() const;
     bool isExpired(int);
     int untilExpDate(int);
     [[nodiscard]] int price() const override;

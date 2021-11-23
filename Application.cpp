@@ -16,3 +16,7 @@ Application::Application(std::unordered_map<std::string, int> data):
 data_(std::move(data)){
     add();
 }
+
+void Application::clearNeeds() {
+    needs_.clear();
+}

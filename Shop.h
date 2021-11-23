@@ -15,7 +15,7 @@ class Shop {
 public:
     Shop(int size=5);
 
-    Application& order(int choose=10);
+    Application& order(int choose=10) const;
 
     std::vector<int>& randShuffVec(int choose = 10);
 

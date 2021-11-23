@@ -4,17 +4,23 @@
 
 #include "Shop.h"
 #include "Product.h"
+#include "Application.h"
 
 #include <random>
 
 Shop::Shop(int size):
         size_(size){}
 
-Application& Shop::order(int choose) {
+Application& Shop::order(int choose) const {  // link or pointer?
     int j = 0;
 
     std::unordered_map<std::string, int> data;
-    for (auto& i : )
+    for (const auto& i : Product::catalogue) {
+        data[i.first] = rand() % size_;
+    }
+
+    Application ret = Application(data);
+    return ret;
 }
 
 std::vector<int> &Shop::randShuffVec(int choose) {
