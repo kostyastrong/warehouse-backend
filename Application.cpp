@@ -3,11 +3,12 @@
 //
 
 #include "Application.h"
+std::unordered_map<std::string, int> Application::needs_;
 
 void Application::add() {
     if (added_) return;
     for (std::pair<const std::basic_string<char>, int>& i : data_) {
-        needs_[i.first] += i.second;
+        Application::needs_[i.first] += i.second;
     }
     added_ = true;
 }
@@ -18,5 +19,5 @@ data_(std::move(data)){
 }
 
 void Application::clearNeeds() {
-    needs_.clear();
+    Application::needs_.clear();
 }

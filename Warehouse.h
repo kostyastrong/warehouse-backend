@@ -12,10 +12,11 @@
 
 class Warehouse {
 public:
-    Warehouse(int numTypes, int numShops, int sizeCat = 3, int amsize = 5, int def = 5);
+    Warehouse(int numTypes, int numShops, int sizeCateg = 3, int amsize = 15, int def = 5);
 
+    void checkContainers(int today);
+    static std::set<Pack*> bestDiscounts_;
 
-    static std::set<Pack*> bestDiscounts;
 
 private:
     int size_;
@@ -23,7 +24,7 @@ private:
     void setStorage(int amSize = 15);
     void fillStorage(int def = 5);
     void createShops(int numShops);
-    std::set<Pack, decltype(Pack::sortByComing)*> containers;
+    std::set<Pack*, decltype(Pack::sortByComing)*> containers_;
     std::vector<Shop> shops_;
     std::unordered_map<std::string, int> amountExists_;
     std::unordered_map<std::string, int> amountMax_;

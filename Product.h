@@ -19,9 +19,9 @@ public:
 
     [[nodiscard]] virtual int price() const;
 
-    std::string getName() const;
+    [[nodiscard]] const std::string& getName() const;
 
-    int getLife() const;
+    [[nodiscard]] int getLife() const;
 
     Product(Product&& a) noexcept;
 
@@ -33,7 +33,7 @@ public:
     static void setCatalogue(int sz);
 
     static std::vector<std::string> names;
-    static std::unordered_map<std::string, Product&> catalogue;
+    static std::unordered_map<std::string, Product*> catalogue;
 
     //friend class Pack;
 
@@ -55,7 +55,7 @@ public:
     Pack(const Product& a, int packages, int today);
     [[nodiscard]] int dateCame() const;
     bool isExpired(int);
-    int untilExpDate(int);
+    int untilExpDate(int) const;
     [[nodiscard]] int price() const override;
     friend bool operator<(const Pack& a, const Pack& b);
 

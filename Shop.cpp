@@ -11,7 +11,7 @@
 Shop::Shop(int size):
         size_(size){}
 
-Application& Shop::order(int choose) const {  // link or pointer?
+Application* Shop::order(int choose) const {  // link or pointer?
     int j = 0;
 
     std::unordered_map<std::string, int> data;
@@ -19,16 +19,17 @@ Application& Shop::order(int choose) const {  // link or pointer?
         data[i.first] = rand() % size_;
     }
 
-    Application ret = Application(data);
+    auto* ret = new Application(data);
     return ret;
 }
 
-std::vector<int> &Shop::randShuffVec(int choose) {
+int* Shop::randShuffVec(int choose) {
 
     int ret = std::max(1, rand() % choose * size_ / rand());
-    std::vector<int> increase(ret);
-    for (int i = 0; i < ret; ++i) increase[i] = i;
-    std::shuffle(increase.begin(), increase.end(), std::mt19937(std::random_device()()));
+    int* increase = new int[ret];
+    int *j = increase;
+    for (int i = 0; i < ret; ++i, ++j)  *j = i;
+    std::shuffle(increase, increase+ret, std::mt19937(std::random_device()()));
 
     return increase;
 }

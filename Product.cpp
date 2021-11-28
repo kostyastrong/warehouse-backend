@@ -7,6 +7,7 @@
 #include "Product.h"
 
 Product::Product() = default;
+std::unordered_map<std::string, Product*> Product::catalogue;
 
 Product::Product(std::string name, int price, int shelfLife, int inPackage):
     name_(std::move(name)),
@@ -18,7 +19,7 @@ int Product::price() const {
     return price_;
 }
 
-std::string Product::getName() const{
+const std::string& Product::getName() const{
     return name_;
 }
 
@@ -64,7 +65,7 @@ int Pack::price() const {
     return price_ * discount_ / 100;
 }
 
-int Pack::untilExpDate(int current) {
+int Pack::untilExpDate(int current) const {
     return current - expDate_;
 }
 
@@ -88,31 +89,34 @@ bool Pack::sortByComing(const Pack &a, const Pack &b)  {
 
 void Product::setCatalogue(int sz) {
     int INF = 1000000;
-    std::vector<std::pair<std::string, const Product&>> source = {
-            {"egg",          Product("egg", 50, 14, 5 + rand() % sz)},
-            {"fish",         Product("fish", 750, 18, 5 + rand() % sz)},
-            {"meat",         Product("meat", 600, 20, 5 + rand() % sz)},
-            {"apple",        Product("apple", 30, 7, 13 + rand() % sz)},
-            {"pear",         Product("pear", 40, 7, 5 + rand() % sz)},
-            {"milk",         Product("milk", 100, 8, 5 + rand() % sz)},
-            {"water",        Product("water", 25, 30, 5 + rand() % sz)},
-            {"bread",        Product("bread", 80, 8, 5 + rand() % sz)},
-            {"cake",         Product("cake", 500, 16, 5 + rand() % sz)},
-            {"napkins",      Product("napkins", 150, INF, 5 + rand() % sz)},
-            {"soap",         Product("soap", 250, INF, 5 + rand() % sz)},
-            {"shampoo",      Product("shampoo", 400, INF, 5 + rand() % sz)},
-            {"coal",         Product("coal", 200, INF, 5 + rand() % sz)},
-            {"beer",         Product("beer", 75, INF, 5 + rand() % sz)},
-            {"porrige",      Product("porrige", 150, 10, 30 + rand() % sz)},
-            {"apple juice",  Product("apple juice", 100, 12, 5 + rand() % sz)},
-            {"cherry juice", Product("cherry juice", 100, 12, 5 + rand() % sz)},
-            {"crackers",     Product("crakers", 5, 100, 5 + rand() % sz)},
-            {"domestos",     Product("domestos", 200, INF, 5 + rand() % sz)},
-            {"tomato",       Product("tomato", 50, 9, 5 + rand() % sz)}
+    std::vector<std::pair<std::string, Product*>> source = {
+            {"egg",          new Product("egg", 50, 14, 5 + rand() % sz)},
+            {"fish",         new Product("fish", 750, 18, 5 + rand() % sz)},
+            {"meat",         new Product("meat", 600, 20, 5 + rand() % sz)},
+            {"apple",        new Product("apple", 30, 10, 13 + rand() % sz)},
+            {"pear",         new Product("pear", 40, 7, 5 + rand() % sz)},
+            {"milk",         new Product("milk", 100, 8, 5 + rand() % sz)},
+            {"water",        new Product("water", 25, 30, 5 + rand() % sz)},
+            {"bread",        new Product("bread", 80, 8, 5 + rand() % sz)},
+            {"cake",         new Product("cake", 500, 16, 5 + rand() % sz)},
+            {"napkins",      new Product("napkins", 150, INF, 5 + rand() % sz)},
+            {"soap",         new Product("soap", 250, INF, 5 + rand() % sz)},
+            {"shampoo",      new Product("shampoo", 400, INF, 5 + rand() % sz)},
+            {"coal",         new Product("coal", 200, INF, 5 + rand() % sz)},
+            {"beer",         new Product("beer", 75, INF, 5 + rand() % sz)},
+            {"porrige",      new Product("porrige", 150, 10, 30 + rand() % sz)},
+            {"apple juice",  new Product("apple juice", 100, 12, 5 + rand() % sz)},
+            {"cherry juice", new Product("cherry juice", 100, 12, 5 + rand() % sz)},
+            {"crackers",     new Product("crakers", 5, 100, 5 + rand() % sz)},
+            {"domestos",     new Product("domestos", 200, INF, 5 + rand() % sz)},
+            {"tomato",       new Product("tomato", 50, 9, 5 + rand() % sz)}
     };
 
-    std::shuffle(source.begin(), source.end(), std::mt19937(std::random_device()()));
-    Product::catalogue = std::unordered_map<std::string, const Product&>(source.begin(), source.begin() + sz);
+    for (int i = 0; i < sz; ++i) {
+        Product::catalogue[source[i].first] = source[i].second;
+    }
+    // std::shuffle(source.begin(), source.end(), std::mt19937(std::random_device()()));
+    //Product::catalogue = std::unordered_map<std::string, Product*>(source.begin(), source.begin() + sz);
 }
 
 
