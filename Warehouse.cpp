@@ -4,6 +4,7 @@
 
 #include "Warehouse.h"
 
+#include <iostream>
 #include <random>
 
 Warehouse::Warehouse(int numTypes, int numShops, int sizeCateg, int amSize, int def) {  // K, amsize from 1 to 10, def from 1 to 10
@@ -26,6 +27,7 @@ void Warehouse::fillStorage(int def) {
         amountExists_[i.first] = num;
         Pack* byDef = new Pack(*Product::catalogue["eggs"], num, 1);
         bestDiscounts_.insert(byDef);
+        byCategory_[byDef->getName()].insert(byDef);
     }
 }
 
@@ -37,13 +39,42 @@ void Warehouse::createShops(int numShops) {
 void Warehouse::checkContainers(const int today) {
     Application::clearNeeds();
     std::unordered_map<std::string, int> thrown;
-    while (! containers_.empty() && (*containers_.begin())->dateCame()) {
+    while (! containers_.empty() && (*containers_.begin())->dateCame() <= today) {
         Pack* tmp = *containers_.begin();
-        bestDiscounts_.insert(*containers_.begin());
-        if (amountExists_[tmp->getName()] > amountMax_[tmp->getName()]) {
+        int inBin = addPack(tmp);
+        if (inBin > 0) thrown[tmp->getName()] = inBin;
+    }
+}
 
+int Warehouse::addPack(Pack *fresh) {
+    const std::string& freshName = fresh->getName();
+    amountExists_[freshName] += fresh->getPackages();
+    int left = amountExists_[freshName] - amountMax_[freshName],
+        ret = std::max(0, left);
+
+    throwExtra(left, freshName);
+    return ret;
+}
+
+void Warehouse::throwExtra(int left, const std::string& name) {
+    while (left > 0) {
+        Pack* getOut = nullptr;
+        try {
+            getOut = *byCategory_[name].begin();
+        } catch (...){
+            std::cout << "You've just said you have extra goods,\nbut you don't have any of: " << name << '\n';
+            return;
+        }
+        int inBinLocal = getOut->reducePackages(left);
+        left -= inBinLocal;
+        if (getOut->getPackages() == 0) {
+            byCategory_[name].erase(byCategory_[name].begin());
         }
     }
+}
+
+void Warehouse::throwOld() {
+
 }
 
 

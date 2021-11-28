@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/maincpp/CLionProjects/warehouse/Application.cpp
+Application.h
+/home/maincpp/CLionProjects/warehouse/Application.h
+
 /home/maincpp/CLionProjects/warehouse/Application.h
 string
 -
@@ -32,6 +36,16 @@ vector
 unordered_map
 -
 
+/home/maincpp/CLionProjects/warehouse/Shop.cpp
+Shop.h
+/home/maincpp/CLionProjects/warehouse/Shop.h
+Product.h
+/home/maincpp/CLionProjects/warehouse/Product.h
+Application.h
+/home/maincpp/CLionProjects/warehouse/Application.h
+random
+-
+
 /home/maincpp/CLionProjects/warehouse/Shop.h
 Product.h
 /home/maincpp/CLionProjects/warehouse/Product.h
@@ -47,6 +61,8 @@ random
 /home/maincpp/CLionProjects/warehouse/Warehouse.cpp
 Warehouse.h
 /home/maincpp/CLionProjects/warehouse/Warehouse.h
+iostream
+-
 random
 -
 

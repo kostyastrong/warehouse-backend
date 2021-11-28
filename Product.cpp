@@ -87,6 +87,18 @@ bool Pack::sortByComing(const Pack &a, const Pack &b)  {
     return a.dateCame() < b.dateCame();
 }
 
+int Pack::getPackages() const {
+    return packages_;
+}
+
+int Pack::reducePackages(int num) {
+    if (num > packages_) {
+        num = packages_;
+    }
+    packages_ -= num;
+    return num;
+}
+
 void Product::setCatalogue(int sz) {
     int INF = 1000000;
     std::vector<std::pair<std::string, Product*>> source = {

@@ -55,8 +55,10 @@ public:
     Pack(const Product& a, int packages, int today);
     [[nodiscard]] int dateCame() const;
     bool isExpired(int);
-    int untilExpDate(int) const;
+    [[nodiscard]] int untilExpDate(int) const;
     [[nodiscard]] int price() const override;
+    [[nodiscard]] int getPackages() const;
+    int reducePackages(int);
     friend bool operator<(const Pack& a, const Pack& b);
 
 private:
