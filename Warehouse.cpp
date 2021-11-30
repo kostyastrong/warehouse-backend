@@ -29,7 +29,7 @@ void Warehouse::fillStorage(int def) {
     for (const auto& i : Product::catalogue) {
         int num = amountMax_[i.first] * def / 10;
         amountExists_[i.first] = num;
-        Pack* byDef = new Pack(*Product::catalogue["eggs"], num, 1);
+        Pack* byDef = new Pack(*Product::catalogue[i.first], num, 1);
         bestDiscounts_.insert(byDef);
         byCategory_[byDef->getName()].insert(byDef);
     }
