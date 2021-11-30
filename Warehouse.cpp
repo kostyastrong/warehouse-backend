@@ -12,6 +12,8 @@ std::set<Pack*> Warehouse::bestDiscounts_;
 Warehouse::Warehouse(int numTypes, int numShops, int sizeCateg, int amSize, int def) {  // K, amsize from 1 to 10, def from 1 to 10
     Product::setCatalogue(sizeCateg);
     setStorage(amSize);
+    createShops(numShops);
+    fillStorage(def);
 }
 
 
@@ -34,8 +36,10 @@ void Warehouse::fillStorage(int def) {
 }
 
 void Warehouse::createShops(int numShops) {
-    shops_.reserve(numShops);
-
+    shops_ = std::vector<Shop*>(numShops, nullptr);
+    for (int i = 0; i < numShops; ++i) {
+        shops_[i] = new Shop(4 + rand() % 4);
+    }
 }
 
 void Warehouse::checkContainers(const int today) {

@@ -9,7 +9,9 @@
 #include <random>
 
 Shop::Shop(int size):
-        size_(size){}
+        size_(size),
+        hapiness_(0),
+        target_(0){}
 
 Application* Shop::order(int choose) const {  // link or pointer?
     int j = 0;

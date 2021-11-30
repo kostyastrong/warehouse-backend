@@ -10,6 +10,10 @@ void newDay() {
 }
 
 int main() {
+#ifdef STRONG
+    freopen("input.txt", "r", stdin);
+#endif
+
     int numTypes, shops, days;
     std::cin >> numTypes >> shops >> days;
 

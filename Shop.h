@@ -20,9 +20,9 @@ public:
     int* randShuffVec(int choose = 10);
 
 private:
-    int target_;  // we can specify the goal of a shop
+    int target_{};  // we can specify the goal of a shop
     int size_;  // to have a size of a shop
-    int hapiness_;  //
+    int hapiness_{};  //
 };
 
 

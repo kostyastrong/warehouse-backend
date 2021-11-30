@@ -33,7 +33,7 @@ private:
     void throwOld(int today);
     std::set<Pack*, sortByComing> containers_;
     std::unordered_map<std::string, std::set<Pack*, sortByComing>> byCategory_;
-    std::vector<Shop> shops_;
+    std::vector<Shop*> shops_;
     std::unordered_map<std::string, int> amountExists_;
     std::unordered_map<std::string, int> amountMax_;
 };
