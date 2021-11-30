@@ -99,7 +99,7 @@ int Pack::reducePackages(int num) {
     return num;
 }
 
-void Product::setCatalogue(int sz) {
+void Product::setCatalogue(int numTypes, int sz) {
     int INF = 1000000;
     std::vector<std::pair<std::string, Product*>> source = {
             {"egg",          new Product("egg", 50, 14, 5 + rand() % sz)},
@@ -124,7 +124,7 @@ void Product::setCatalogue(int sz) {
             {"tomato",       new Product("tomato", 50, 9, 5 + rand() % sz)}
     };
 
-    for (int i = 0; i < sz; ++i) {
+    for (int i = 0; i < numTypes; ++i) {
         Product::catalogue[source[i].first] = source[i].second;
     }
     // std::shuffle(source.begin(), source.end(), std::mt19937(std::random_device()()));

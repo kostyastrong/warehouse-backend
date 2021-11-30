@@ -30,7 +30,7 @@ public:
     Product& operator=(Product other);
 
     friend void swap(Product&a, Product& b);
-    static void setCatalogue(int sz);
+    static void setCatalogue(int numTypes, int sz);
 
     static std::vector<std::string> names;
     static std::unordered_map<std::string, Product*> catalogue;

@@ -3,6 +3,10 @@
 //
 
 #include "Application.h"
+
+Report::Report(std::unordered_map<std::string, int>& data):
+    data_(std::move(data)){}
+
 std::unordered_map<std::string, int> Application::needs_;
 
 void Application::add() {
@@ -13,8 +17,8 @@ void Application::add() {
     added_ = true;
 }
 
-Application::Application(std::unordered_map<std::string, int> data):
-data_(std::move(data)){
+Application::Application(std::unordered_map<std::string, int>& data):
+    Report(data){
     add();
 }
 
@@ -22,6 +26,10 @@ void Application::clearNeeds() {
     Application::needs_.clear();
 }
 
-void Application::globalApplication(std::unordered_map<std::string, int>& data){
-    Application::needs_ = std::move(data);
+int Control::getType() const {
+    return type_;
 }
+
+Control::Control(std::unordered_map<std::string, int> &data, int type):
+Report(data),
+type_(type){}

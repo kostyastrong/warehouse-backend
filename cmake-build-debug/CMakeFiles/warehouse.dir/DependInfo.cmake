@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/maincpp/CLionProjects/warehouse/Application.cpp" "/home/maincpp/CLionProjects/warehouse/cmake-build-debug/CMakeFiles/warehouse.dir/Application.cpp.o"
+  "/home/maincpp/CLionProjects/warehouse/Bookkeeping.cpp" "/home/maincpp/CLionProjects/warehouse/cmake-build-debug/CMakeFiles/warehouse.dir/Bookkeeping.cpp.o"
   "/home/maincpp/CLionProjects/warehouse/Product.cpp" "/home/maincpp/CLionProjects/warehouse/cmake-build-debug/CMakeFiles/warehouse.dir/Product.cpp.o"
   "/home/maincpp/CLionProjects/warehouse/Shop.cpp" "/home/maincpp/CLionProjects/warehouse/cmake-build-debug/CMakeFiles/warehouse.dir/Shop.cpp.o"
   "/home/maincpp/CLionProjects/warehouse/Warehouse.cpp" "/home/maincpp/CLionProjects/warehouse/cmake-build-debug/CMakeFiles/warehouse.dir/Warehouse.cpp.o"

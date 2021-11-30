@@ -5,6 +5,11 @@ CMakeFiles/warehouse.dir/Application.cpp.o: \
  ../Application.cpp \
  ../Application.h \
  ../Product.h
+CMakeFiles/warehouse.dir/Bookkeeping.cpp.o: \
+ ../Application.h \
+ ../Bookkeeping.cpp \
+ ../Bookkeeping.h \
+ ../Product.h
 CMakeFiles/warehouse.dir/Product.cpp.o: \
  ../Product.cpp \
  ../Product.h

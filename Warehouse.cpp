@@ -9,8 +9,9 @@
 
 std::set<Pack*> Warehouse::bestDiscounts_;
 
-Warehouse::Warehouse(int numTypes, int numShops, int sizeCateg, int amSize, int def) {  // K, amsize from 1 to 10, def from 1 to 10
-    Product::setCatalogue(sizeCateg);
+Warehouse::Warehouse(int numTypes, int numShops, int sizeCateg, int amSize, int def):
+    size_(amSize) {  // K, amsize from 1 to 10, def from 1 to 10
+    Product::setCatalogue(numTypes, sizeCateg);
     setStorage(amSize);
     createShops(numShops);
     fillStorage(def);
@@ -43,15 +44,14 @@ void Warehouse::createShops(int numShops) {
 }
 
 void Warehouse::checkContainers(const int today) {
-    Application::clearNeeds();
     std::unordered_map<std::string, int> thrown;
     while (! containers_.empty() && (*containers_.begin())->dateCame() <= today) {
         Pack* tmp = *containers_.begin();
         int inBin = addPack(tmp);
         if (inBin > 0) thrown[tmp->getName()] = inBin;
     }
-    Application::globalApplication(thrown);
-    Application toBeReturned(thrown);
+    Control extra(thrown, 2);
+
 }
 
 int Warehouse::addPack(Pack *fresh) {
@@ -82,7 +82,6 @@ void Warehouse::throwExtra(int left, const std::string& name) {
 }
 
 void Warehouse::throwOld(const int today) {
-    Application::clearNeeds();
     std::unordered_map<std::string, int> thrown;
     for (auto& i : byCategory_) {
         while (! byCategory_[i.first].empty() &&
@@ -92,7 +91,7 @@ void Warehouse::throwOld(const int today) {
             byCategory_[i.first].erase(byCategory_[i.first].begin());
         }
     }
-    Application::globalApplication(thrown);
+    Control extra(thrown, 2);
 }
 
 

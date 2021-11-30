@@ -5,6 +5,11 @@ CMakeFiles/warehouse.dir/Application.cpp.o
  /home/maincpp/CLionProjects/warehouse/Application.cpp
  /home/maincpp/CLionProjects/warehouse/Application.h
  /home/maincpp/CLionProjects/warehouse/Product.h
+CMakeFiles/warehouse.dir/Bookkeeping.cpp.o
+ /home/maincpp/CLionProjects/warehouse/Application.h
+ /home/maincpp/CLionProjects/warehouse/Bookkeeping.cpp
+ /home/maincpp/CLionProjects/warehouse/Bookkeeping.h
+ /home/maincpp/CLionProjects/warehouse/Product.h
 CMakeFiles/warehouse.dir/Product.cpp.o
  /home/maincpp/CLionProjects/warehouse/Product.cpp
  /home/maincpp/CLionProjects/warehouse/Product.h

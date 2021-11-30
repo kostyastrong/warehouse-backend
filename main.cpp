@@ -2,8 +2,10 @@
 #include "Product.h"
 #include "Shop.h"
 #include "Warehouse.h"
+#include "Application.h"
 
 Warehouse* warehouse = nullptr;
+
 
 void newDay() {
     Application::clearNeeds();
@@ -20,9 +22,9 @@ int main() {
     warehouse = new Warehouse(numTypes, shops, 3);
 
     for (int day = 1; day <= days; ++day) {
-
         if (days - day <= 1) {
         }
     }
+    std::cout << "tupak's died.";
     return 0;
 }
