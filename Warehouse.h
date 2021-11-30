@@ -10,6 +10,12 @@
 #include "Shop.h"
 #include "set"
 
+struct sortByComing {
+    bool operator() (const Pack* x, const Pack* y) const {
+        return Pack::sortByComing(*x, *y);
+    }
+};
+
 class Warehouse {
 public:
     Warehouse(int numTypes, int numShops, int sizeCateg = 3, int amsize = 15, int def = 5);
@@ -24,9 +30,9 @@ private:
     void createShops(int numShops);
     void throwExtra(int left, const std::string& name);
     int addPack(Pack* adding);
-    void throwOld();
-    std::set<Pack*, decltype(Pack::sortByComing)*> containers_;
-    std::unordered_map<std::string, std::set<Pack*, decltype(Pack::sortByComing)>> byCategory_(Pack::sortByComing);
+    void throwOld(int today);
+    std::set<Pack*, sortByComing> containers_;
+    std::unordered_map<std::string, std::set<Pack*, sortByComing>> byCategory_;
     std::vector<Shop> shops_;
     std::unordered_map<std::string, int> amountExists_;
     std::unordered_map<std::string, int> amountMax_;

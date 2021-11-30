@@ -12,6 +12,7 @@
 class Application {
 public:
     explicit Application(std::unordered_map<std::string, int> data);
+    static void globalApplication(std::unordered_map<std::string, int>& data);
     static std::unordered_map<std::string, int> needs_;
     void add();
     static void clearNeeds();

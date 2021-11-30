@@ -21,3 +21,7 @@ data_(std::move(data)){
 void Application::clearNeeds() {
     Application::needs_.clear();
 }
+
+void Application::globalApplication(std::unordered_map<std::string, int>& data){
+    Application::needs_ = std::move(data);
+}

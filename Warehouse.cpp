@@ -7,6 +7,8 @@
 #include <iostream>
 #include <random>
 
+std::set<Pack*> Warehouse::bestDiscounts_;
+
 Warehouse::Warehouse(int numTypes, int numShops, int sizeCateg, int amSize, int def) {  // K, amsize from 1 to 10, def from 1 to 10
     Product::setCatalogue(sizeCateg);
     setStorage(amSize);
@@ -44,6 +46,8 @@ void Warehouse::checkContainers(const int today) {
         int inBin = addPack(tmp);
         if (inBin > 0) thrown[tmp->getName()] = inBin;
     }
+    Application::globalApplication(thrown);
+    Application toBeReturned(thrown);
 }
 
 int Warehouse::addPack(Pack *fresh) {
@@ -73,8 +77,18 @@ void Warehouse::throwExtra(int left, const std::string& name) {
     }
 }
 
-void Warehouse::throwOld() {
-
+void Warehouse::throwOld(const int today) {
+    Application::clearNeeds();
+    std::unordered_map<std::string, int> thrown;
+    for (auto& i : byCategory_) {
+        while (! byCategory_[i.first].empty() &&
+                (*byCategory_[i.first].begin())->isExpired(today)) {
+            Pack * tmp = *byCategory_[i.first].begin();
+            thrown[tmp->getName()] += tmp->getPackages();
+            byCategory_[i.first].erase(byCategory_[i.first].begin());
+        }
+    }
+    Application::globalApplication(thrown);
 }
 
 
