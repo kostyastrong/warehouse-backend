@@ -32,6 +32,7 @@ public:
     friend void swap(Product&a, Product& b);
     static void setCatalogue(int numTypes, int sz);
     int inPackage();
+    int calcAmount(int);
 
     static std::vector<std::string> names;
     static std::unordered_map<std::string, Product*> catalogue;

@@ -7,6 +7,7 @@
 #include <iostream>
 #include <random>
 
+
 std::set<Pack*> Warehouse::bestDiscounts_;
 
 Warehouse::Warehouse(int numTypes, int numShops, int sizeCateg, int amSize, int def):
@@ -31,7 +32,7 @@ void Warehouse::setStorage(int amSize) {
 void Warehouse::fillStorage(int def) {
     for (const auto& i : Product::catalogue) {
         int num = amountMax_[i.first] * def / 10;
-        amountExists_[i.first] = num * Product::catalogue[i.first]->inPackage();
+        amountExists_[i.first] = num;
         Pack* byDef = new Pack(*Product::catalogue[i.first], num, 1);
         bestDiscounts_.insert(byDef);
         byCategory_[byDef->getName()].insert(byDef);
@@ -117,12 +118,26 @@ void Warehouse::dailyOrders() {
     }
 }
 
+
 void Warehouse::addContainer(Pack *&added) {
     containers_.insert(added);
 }
 
-const std::unordered_map<std::string, int> &Warehouse::getAmExist() {
+std::unordered_map<std::string, int> &Warehouse::getAmountExist() {
     return amountExists_;
+}
+
+void Warehouse::orderFromSupplier(std::string name, int num, int today) {
+    Pack* adding = new Pack(*Product::catalogue[name], num, today + 1 + rand() % 5);
+    addContainer(adding);
+}
+
+std::unordered_map<std::string, int> &Warehouse::getAmountOrdered() {
+    return amountOrdered_;
+}
+
+std::unordered_map<std::string, int> &Warehouse::getAmountMax() {
+    return amountMax_;
 }
 
 

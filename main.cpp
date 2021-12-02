@@ -9,6 +9,8 @@ Warehouse* warehouse = nullptr;
 void newDay(int today) {
     Application::clearNeeds();
     warehouse->throwOld(today);
+    warehouse->dailyOrders();
+
 }
 
 int main() {

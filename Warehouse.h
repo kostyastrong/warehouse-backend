@@ -23,13 +23,13 @@ public:
     void checkContainers(int today, const Bookkeeping* taker);
     void dailyOrders();
     void throwOld(int today);
-    void addContainer(Pack*& added);
-    const std::unordered_map<std::string, int>& getAmExist();
+    void orderFromSupplier(std::string name, int num, int today);
+
+    std::unordered_map<std::string, int>& getAmountExist();
+    std::unordered_map<std::string, int>& getAmountMax();
+    std::unordered_map<std::string, int>& getAmountOrdered();
 
     static std::set<Pack*> bestDiscounts_;
-    std::unordered_map<std::string, int> amountOrdered_;
-
-
 
 private:
     int size_;  // how many goods there are
@@ -39,10 +39,13 @@ private:
     void fillStorage(int def = 5);
     void createShops(int numShops);
     void throwExtra(int left, const std::string& name);
+    void addContainer(Pack*& added);
     int addPack(Pack* adding);
     std::set<Pack*, sortByComing> containers_;
     std::unordered_map<std::string, std::set<Pack*, sortByComing>> byCategory_;
     std::vector<Shop*> shops_;
+
+    std::unordered_map<std::string, int> amountOrdered_;
     std::unordered_map<std::string, int> amountExists_;
     std::unordered_map<std::string, int> amountMax_;
 };

@@ -159,6 +159,10 @@ int Product::inPackage() {
     return inPackage_;
 }
 
+int Product::calcAmount(int a) {
+    return a * Product::catalogue[name_]->inPackage();
+}
+
 
 
 
