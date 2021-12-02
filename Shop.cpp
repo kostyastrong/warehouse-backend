@@ -14,11 +14,13 @@ Shop::Shop(int size):
         target_(0){}
 
 Application* Shop::order(int choose) const {
-    int j = 0;
+    int j = 1;
 
     std::unordered_map<std::string, int> data;
     for (const auto& i : Product::catalogue) {
         data[i.first] = rand() % size_;
+        if (j == choose) break;
+        ++j;
     }
 
     auto* ret = new Application(data);

@@ -25,7 +25,7 @@ Warehouse::Warehouse(int numTypes, int numShops, int sizeCateg, int amSize, int 
 void Warehouse::setStorage(int amSize) {
     std::unordered_map<std::string, int> tmp;
     for (const auto& i : Product::catalogue) {
-        amountMax_[i.first] = 30 + rand() % amSize;
+        amountMax_[i.first] = 13 + rand() % amSize;
     }
 }
 
@@ -104,18 +104,23 @@ void Warehouse::dailyOrders(int today, Manager* current) {
     int ind = 0;
     for (Shop* i : shops_) {
         Application* curr = i->order(5);  // to order only 5 types
-        orders[ind] = curr;  // when do we copy pointer and when do we copy memory
+        orders[ind++] = curr;  // when do we copy pointer and when do we copy memory
     }
 
     std::set<std::string> full;
     std::unordered_map<std::string, int> needManager;
     for (std::pair<const std::string, int>& i : Application::needs_) {
-        if (i.second <= amountExists_[i.first]) {
+        int exists = Product::catalogue[i.first]->calcAmount(amountExists_[i.first]);
+        if (i.second <= exists) {
             full.insert(i.first);
         } else {
-            needManager[i.first] = amountExists_[i.first];
+            needManager[i.first] = exists;
         }
     }
+
+    std::vector<Report *> rules = current->giveGoods(orders, shops_, needManager);  // 139 is here
+
+
 }
 
 
