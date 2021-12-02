@@ -97,7 +97,7 @@ void Warehouse::throwOld(const int today) {
     Control extra(thrown, 2);
 }
 
-void Warehouse::dailyOrders() {
+void Warehouse::dailyOrders(int today, Manager* current) {
     Application::clearNeeds();
     std::vector<Application*> orders(numShops_, nullptr);
     std::vector<Application*> gone(numShops_, {});

@@ -187,4 +187,5 @@ CMakeFiles/warehouse.dir/main.cpp.o: \
  /home/maincpp/CLionProjects/warehouse/Bookkeeping.h \
  /usr/include/c++/11.1.0/set /usr/include/c++/11.1.0/bits/stl_tree.h \
  /usr/include/c++/11.1.0/bits/stl_set.h \
- /usr/include/c++/11.1.0/bits/stl_multiset.h
+ /usr/include/c++/11.1.0/bits/stl_multiset.h \
+ /home/maincpp/CLionProjects/warehouse/Manager.h

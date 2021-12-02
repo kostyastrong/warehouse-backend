@@ -3,14 +3,17 @@
 #include "Shop.h"
 #include "Warehouse.h"
 #include "Application.h"
+#include "Manager.h"
 
 Warehouse* warehouse = nullptr;
+StupidManager* stupid = new StupidManager();
+Bookkeeping* statistics = nullptr;
 
 void newDay(int today) {
     Application::clearNeeds();
     warehouse->throwOld(today);
-    warehouse->dailyOrders();
-
+    warehouse->dailyOrders(today, stupid);
+    warehouse->checkContainers(today, statistics);
 }
 
 int main() {
@@ -22,10 +25,14 @@ int main() {
     std::cin >> numTypes >> shops >> days;
 
     warehouse = new Warehouse(numTypes, shops, 3);
+    statistics = new Bookkeeping(days);
 
     for (int day = 1; day <= days; ++day) {
         bool buy = days - day > 1;
         newDay(day);
+        if (buy) {
+            stupid->orderGoods(warehouse, day);
+        }
     }
     std::cout << "tupak's died.";
     return 0;

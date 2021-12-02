@@ -167,6 +167,7 @@ CMakeFiles/warehouse.dir/Warehouse.cpp.o: \
  /usr/include/c++/11.1.0/set /usr/include/c++/11.1.0/bits/stl_tree.h \
  /usr/include/c++/11.1.0/bits/stl_set.h \
  /usr/include/c++/11.1.0/bits/stl_multiset.h \
+ /home/maincpp/CLionProjects/warehouse/Manager.h \
  /usr/include/c++/11.1.0/iostream /usr/include/c++/11.1.0/ostream \
  /usr/include/c++/11.1.0/ios /usr/include/c++/11.1.0/exception \
  /usr/include/c++/11.1.0/bits/exception_ptr.h \

@@ -1216,6 +1216,7 @@ CMakeFiles/warehouse.dir/Warehouse.cpp.o: ../Warehouse.cpp \
   /usr/include/c++/11.1.0/bits/stl_tree.h \
   /usr/include/c++/11.1.0/bits/stl_set.h \
   /usr/include/c++/11.1.0/bits/stl_multiset.h \
+  ../Manager.h \
   /usr/include/c++/11.1.0/iostream \
   /usr/include/c++/11.1.0/ostream \
   /usr/include/c++/11.1.0/ios \
@@ -1493,7 +1494,8 @@ CMakeFiles/warehouse.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/11.1.0/set \
   /usr/include/c++/11.1.0/bits/stl_tree.h \
   /usr/include/c++/11.1.0/bits/stl_set.h \
-  /usr/include/c++/11.1.0/bits/stl_multiset.h
+  /usr/include/c++/11.1.0/bits/stl_multiset.h \
+  ../Manager.h
 
 
 ../main.cpp:

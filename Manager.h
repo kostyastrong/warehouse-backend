@@ -9,6 +9,8 @@
 #include "Shop.h"
 #include "Warehouse.h"
 
+class Warehouse;
+
 class Manager {
 public:
     virtual std::vector<Report*> giveGoods(const std::vector<Application*>&, const std::vector<Shop*>&,
@@ -19,8 +21,9 @@ public:
 };
 
 class StupidManager: public Manager {
+public:
     std::vector<Report*> giveGoods(const std::vector<Application*>&, const std::vector<Shop*>&,
-                             std::unordered_map<std::string, int>&) override final;
+                             std::unordered_map<std::string, int>&) final;
     void orderGoods(Warehouse*&, int) final;
     void makeSales(Warehouse*&, int) final;
 };

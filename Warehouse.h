@@ -10,6 +10,8 @@
 #include "Bookkeeping.h"
 #include "Shop.h"
 #include "set"
+#include "Manager.h"
+class Manager;
 
 struct sortByComing {
     bool operator() (const Pack* x, const Pack* y) const {
@@ -21,7 +23,7 @@ class Warehouse {
 public:
     Warehouse(int numTypes, int numShops, int sizeCateg = 3, int amsize = 15, int def = 5);
     void checkContainers(int today, const Bookkeeping* taker);
-    void dailyOrders();
+    void dailyOrders(int today, Manager* current);
     void throwOld(int today);
     void orderFromSupplier(std::string name, int num, int today);
 
