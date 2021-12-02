@@ -96,6 +96,12 @@
 		<Unit filename="/home/maincpp/CLionProjects/warehouse/Bookkeeping.h">
 			<Option target="warehouse"/>
 		</Unit>
+		<Unit filename="/home/maincpp/CLionProjects/warehouse/Manager.cpp">
+			<Option target="warehouse"/>
+		</Unit>
+		<Unit filename="/home/maincpp/CLionProjects/warehouse/Manager.h">
+			<Option target="warehouse"/>
+		</Unit>
 		<Unit filename="/home/maincpp/CLionProjects/warehouse/Product.cpp">
 			<Option target="warehouse"/>
 		</Unit>

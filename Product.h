@@ -31,6 +31,9 @@ public:
 
     friend void swap(Product&a, Product& b);
     static void setCatalogue(int numTypes, int sz);
+    int inPackage();
+
+    int calcAmount(int) const;
 
     static std::vector<std::string> names;
     static std::unordered_map<std::string, Product*> catalogue;
@@ -42,10 +45,9 @@ public:
 protected:
     int price_ = 0;
     int shelfLife_ = -1; // how much it could be stored
+    int inPackage_ = 0;
 
     std::string name_ = "None";
-private:
-    int inPackage_ = 0;
 };
 
 
@@ -60,6 +62,7 @@ public:
     [[nodiscard]] int getPackages() const;
     int reducePackages(int);
     friend bool operator<(const Pack& a, const Pack& b);
+    int calcAmount() const;
 
 private:
     int packages_ = 0;

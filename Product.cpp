@@ -99,6 +99,10 @@ int Pack::reducePackages(int num) {
     return num;
 }
 
+int Pack::calcAmount() const {
+    return inPackage_ * packages_;
+}
+
 void Product::setCatalogue(int numTypes, int sz) {
     int INF = 1000000;
     std::vector<std::pair<std::string, Product*>> source = {
@@ -154,6 +158,14 @@ std::vector<std::string> Product::names {
         "domestos",
         "tomato"
 };
+
+int Product::inPackage() {
+    return inPackage_;
+}
+
+int Product::calcAmount(int a) const {
+    return a * Product::catalogue[name_]->inPackage();
+}
 
 
 

@@ -177,6 +177,30 @@ Bookkeeping.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/warehouse.dir/build.make CMakeFiles/warehouse.dir/Bookkeeping.cpp.s
 .PHONY : Bookkeeping.cpp.s
 
+Manager.o: Manager.cpp.o
+.PHONY : Manager.o
+
+# target to build an object file
+Manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/warehouse.dir/build.make CMakeFiles/warehouse.dir/Manager.cpp.o
+.PHONY : Manager.cpp.o
+
+Manager.i: Manager.cpp.i
+.PHONY : Manager.i
+
+# target to preprocess a source file
+Manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/warehouse.dir/build.make CMakeFiles/warehouse.dir/Manager.cpp.i
+.PHONY : Manager.cpp.i
+
+Manager.s: Manager.cpp.s
+.PHONY : Manager.s
+
+# target to generate assembly for a file
+Manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/warehouse.dir/build.make CMakeFiles/warehouse.dir/Manager.cpp.s
+.PHONY : Manager.cpp.s
+
 Product.o: Product.cpp.o
 .PHONY : Product.o
 
@@ -288,6 +312,9 @@ help:
 	@echo "... Bookkeeping.o"
 	@echo "... Bookkeeping.i"
 	@echo "... Bookkeeping.s"
+	@echo "... Manager.o"
+	@echo "... Manager.i"
+	@echo "... Manager.s"
 	@echo "... Product.o"
 	@echo "... Product.i"
 	@echo "... Product.s"

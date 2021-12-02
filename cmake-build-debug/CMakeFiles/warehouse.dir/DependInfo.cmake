@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/maincpp/CLionProjects/warehouse/Application.cpp" "CMakeFiles/warehouse.dir/Application.cpp.o" "gcc" "CMakeFiles/warehouse.dir/Application.cpp.o.d"
   "/home/maincpp/CLionProjects/warehouse/Bookkeeping.cpp" "CMakeFiles/warehouse.dir/Bookkeeping.cpp.o" "gcc" "CMakeFiles/warehouse.dir/Bookkeeping.cpp.o.d"
+  "/home/maincpp/CLionProjects/warehouse/Manager.cpp" "CMakeFiles/warehouse.dir/Manager.cpp.o" "gcc" "CMakeFiles/warehouse.dir/Manager.cpp.o.d"
   "/home/maincpp/CLionProjects/warehouse/Product.cpp" "CMakeFiles/warehouse.dir/Product.cpp.o" "gcc" "CMakeFiles/warehouse.dir/Product.cpp.o.d"
   "/home/maincpp/CLionProjects/warehouse/Shop.cpp" "CMakeFiles/warehouse.dir/Shop.cpp.o" "gcc" "CMakeFiles/warehouse.dir/Shop.cpp.o.d"
   "/home/maincpp/CLionProjects/warehouse/Warehouse.cpp" "CMakeFiles/warehouse.dir/Warehouse.cpp.o" "gcc" "CMakeFiles/warehouse.dir/Warehouse.cpp.o.d"

@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/warehouse.dir/Application.cpp.o.d"
   "CMakeFiles/warehouse.dir/Bookkeeping.cpp.o"
   "CMakeFiles/warehouse.dir/Bookkeeping.cpp.o.d"
+  "CMakeFiles/warehouse.dir/Manager.cpp.o"
+  "CMakeFiles/warehouse.dir/Manager.cpp.o.d"
   "CMakeFiles/warehouse.dir/Product.cpp.o"
   "CMakeFiles/warehouse.dir/Product.cpp.o.d"
   "CMakeFiles/warehouse.dir/Shop.cpp.o"

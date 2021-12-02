@@ -11,15 +11,22 @@
 
 class Report {
 public:
+    Report();
+    Report(const Report&);
     explicit Report(std::unordered_map<std::string, int>& data);
+    const std::unordered_map<std::string, int>& getData();
+
 protected:
     std::unordered_map<std::string, int> data_;
 };
 
 class Application: public Report {
 public:
+    Application();
+    Application(const Application&);
     explicit Application(std::unordered_map<std::string, int>& data);
     static std::unordered_map<std::string, int> needs_;
+    void addProd(std::string, int);
 
     static void clearNeeds();
 

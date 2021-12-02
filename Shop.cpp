@@ -13,12 +13,14 @@ Shop::Shop(int size):
         hapiness_(0),
         target_(0){}
 
-Application* Shop::order(int choose) const {  // link or pointer?
-    int j = 0;
+Application* Shop::order(int choose) const {
+    int j = 1;
 
     std::unordered_map<std::string, int> data;
     for (const auto& i : Product::catalogue) {
         data[i.first] = rand() % size_;
+        if (j == choose) break;
+        ++j;
     }
 
     auto* ret = new Application(data);
