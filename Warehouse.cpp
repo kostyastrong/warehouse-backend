@@ -31,7 +31,7 @@ void Warehouse::setStorage(int amSize) {
 void Warehouse::fillStorage(int def) {
     for (const auto& i : Product::catalogue) {
         int num = amountMax_[i.first] * def / 10;
-        amountExists_[i.first] = num;
+        amountExists_[i.first] = num * Product::catalogue[i.first]->inPackage();
         Pack* byDef = new Pack(*Product::catalogue[i.first], num, 1);
         bestDiscounts_.insert(byDef);
         byCategory_[byDef->getName()].insert(byDef);
@@ -97,11 +97,23 @@ void Warehouse::throwOld(const int today) {
 }
 
 void Warehouse::dailyOrders() {
+    Application::clearNeeds();
     std::vector<Application*> orders(numShops_, nullptr);
+    std::vector<Application*> gone(numShops_, {});
     int ind = 0;
     for (Shop* i : shops_) {
         Application* curr = i->order(5);  // to order only 5 types
-        orders[ind] = curr;
+        orders[ind] = curr;  // when do we copy pointer and when do we copy memory
+    }
+
+    std::set<std::string> full;
+    std::unordered_map<std::string, int> needManager;
+    for (std::pair<const std::string, int>& i : Application::needs_) {
+        if (i.second <= amountExists_[i.first]) {
+            full.insert(i.first);
+        } else {
+            needManager[i.first] = amountExists_[i.first];
+        }
     }
 }
 

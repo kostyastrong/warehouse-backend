@@ -7,6 +7,16 @@
 Report::Report(std::unordered_map<std::string, int>& data):
     data_(std::move(data)){}
 
+Report::Report(){
+    data_ = std::unordered_map<std::string, int> {};
+}
+
+const std::unordered_map<std::string, int> &Report::getData() {
+    return data_;
+}
+
+Report::Report(const Report &a): data_(a.data_){}
+
 std::unordered_map<std::string, int> Application::needs_;
 
 void Application::add() {
@@ -25,6 +35,15 @@ Application::Application(std::unordered_map<std::string, int>& data):
 void Application::clearNeeds() {
     Application::needs_.clear();
 }
+
+Application::Application() {}
+
+void Application::addProd(std::string name, int num) {
+    needs_[name] += num;
+    data_[name] += num;
+}
+
+Application::Application(const Application &a): Report(a), added_(true){}
 
 int Control::getType() const {
     return type_;

@@ -155,6 +155,10 @@ std::vector<std::string> Product::names {
         "tomato"
 };
 
+int Product::inPackage() {
+    return inPackage_;
+}
+
 
 
 

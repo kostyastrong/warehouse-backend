@@ -11,14 +11,15 @@
 
 class Manager {
 public:
-    virtual void giveGoods(const std::vector<Application*>&, const std::vector<Shop*>&,
-                   const std::unordered_map<std::string, int>&) = 0;  // is it already abstract class?
+    virtual std::vector<Report*> giveGoods(const std::vector<Application*>&, const std::vector<Shop*>&,
+                    std::unordered_map<std::string, int>&) = 0;  // is it already abstract class?
     virtual void orderGoods(Warehouse*&,
                             const std::unordered_map<std::string, int>&) = 0;
 };
 
-class StupidManager {
-    
+class StupidManager: public Manager {
+    virtual std::vector<Report*> giveGoods(const std::vector<Application*>&, const std::vector<Shop*>&,
+                             std::unordered_map<std::string, int>&);
 };
 
 
