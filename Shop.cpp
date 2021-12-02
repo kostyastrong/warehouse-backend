@@ -13,7 +13,7 @@ Shop::Shop(int size):
         hapiness_(0),
         target_(0){}
 
-Application* Shop::order(int choose) const {  // link or pointer?
+Application* Shop::order(int choose) const {
     int j = 0;
 
     std::unordered_map<std::string, int> data;

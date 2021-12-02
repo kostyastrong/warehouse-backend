@@ -10,7 +10,9 @@
 std::set<Pack*> Warehouse::bestDiscounts_;
 
 Warehouse::Warehouse(int numTypes, int numShops, int sizeCateg, int amSize, int def):
-    size_(amSize) {  // K, amsize from 1 to 10, def from 1 to 10
+    size_(amSize),
+    numShops_(numShops),
+    numTypes_(numTypes) {  // K, amsize from 1 to 10, def from 1 to 10
     Product::setCatalogue(numTypes, sizeCateg);
     setStorage(amSize);
     createShops(numShops);
@@ -43,15 +45,15 @@ void Warehouse::createShops(int numShops) {
     }
 }
 
-void Warehouse::checkContainers(const int today) {
+void Warehouse::checkContainers(const int today, const Bookkeeping* taker) {
     std::unordered_map<std::string, int> thrown;
     while (! containers_.empty() && (*containers_.begin())->dateCame() <= today) {
         Pack* tmp = *containers_.begin();
         int inBin = addPack(tmp);
+        amountOrdered_[tmp->getName()] -= tmp->getPackages();
         if (inBin > 0) thrown[tmp->getName()] = inBin;
     }
     Control extra(thrown, 2);
-
 }
 
 int Warehouse::addPack(Pack *fresh) {
@@ -92,6 +94,23 @@ void Warehouse::throwOld(const int today) {
         }
     }
     Control extra(thrown, 2);
+}
+
+void Warehouse::dailyOrders() {
+    std::vector<Application*> orders(numShops_, nullptr);
+    int ind = 0;
+    for (Shop* i : shops_) {
+        Application* curr = i->order(5);  // to order only 5 types
+        orders[ind] = curr;
+    }
+}
+
+void Warehouse::addContainer(Pack *&added) {
+    containers_.insert(added);
+}
+
+const std::unordered_map<std::string, int> &Warehouse::getAmExist() {
+    return amountExists_;
 }
 
 

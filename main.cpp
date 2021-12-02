@@ -6,9 +6,9 @@
 
 Warehouse* warehouse = nullptr;
 
-
-void newDay() {
+void newDay(int today) {
     Application::clearNeeds();
+    warehouse->throwOld(today);
 }
 
 int main() {
@@ -22,8 +22,8 @@ int main() {
     warehouse = new Warehouse(numTypes, shops, 3);
 
     for (int day = 1; day <= days; ++day) {
-        if (days - day <= 1) {
-        }
+        bool buy = days - day > 1;
+        newDay(day);
     }
     std::cout << "tupak's died.";
     return 0;

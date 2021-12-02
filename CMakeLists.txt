@@ -4,4 +4,4 @@ project(warehouse)
 set(CMAKE_CXX_STANDARD 17)
 
 add_definitions(-DSTRONG)
-add_executable(warehouse main.cpp Product.cpp Product.h Shop.cpp Shop.h Warehouse.cpp Warehouse.h Application.cpp Application.h Bookkeeping.cpp Bookkeeping.h)
+add_executable(warehouse main.cpp Product.cpp Product.h Shop.cpp Shop.h Warehouse.cpp Warehouse.h Application.cpp Application.h Bookkeeping.cpp Bookkeeping.h Manager.cpp Manager.h)
