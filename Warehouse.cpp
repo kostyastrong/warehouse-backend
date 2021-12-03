@@ -25,7 +25,7 @@ Warehouse::Warehouse(int numTypes, int numShops, int sizeCateg, int amSize, int 
 void Warehouse::setStorage(int amSize) {
     std::unordered_map<std::string, int> tmp;
     for (const auto& i : Product::catalogue) {
-        amountMax_[i.first] = 13 + rand() % amSize;
+        amountMax_[i.first] = 13 + rand() % amSize;  // Packs of...
     }
 }
 
@@ -35,7 +35,7 @@ void Warehouse::fillStorage(int def) {
         amountExists_[i.first] = num;
         Pack* byDef = new Pack(*Product::catalogue[i.first], num, 1);
         bestDiscounts_.insert(byDef);
-        byCategory_[byDef->getName()].insert(byDef);
+        byCategory_[i.first].insert(byDef);
     }
 }
 
@@ -53,21 +53,24 @@ void Warehouse::checkContainers(const int today, const Bookkeeping* taker) {
         int inBin = addPack(tmp);
         amountOrdered_[tmp->getName()] -= tmp->getPackages();
         if (inBin > 0) thrown[tmp->getName()] = inBin;
+        containers_.erase(containers_.begin());
     }
     Control extra(thrown, 2);
 }
 
 int Warehouse::addPack(Pack *fresh) {
-    const std::string& freshName = fresh->getName();
+    std::string freshName = fresh->getName();
+    // std::cout << fresh->getName() << '\n';
     amountExists_[freshName] += fresh->getPackages();
     int left = amountExists_[freshName] - amountMax_[freshName],
         ret = std::max(0, left);
 
-    throwExtra(left, freshName);
+    deletePacks(left, freshName);
     return ret;
 }
 
-void Warehouse::throwExtra(int left, const std::string& name) {
+void Warehouse::deletePacks(int left, const std::string& name, const bool sold) {
+    std::unordered_map<std::string, int> cost;
     while (left > 0) {
         Pack* getOut = nullptr;
         try {
@@ -77,6 +80,7 @@ void Warehouse::throwExtra(int left, const std::string& name) {
             return;
         }
         int inBinLocal = getOut->reducePackages(left);
+        amountExists_[name] -= inBinLocal;
         left -= inBinLocal;
         if (getOut->getPackages() == 0) {
             byCategory_[name].erase(byCategory_[name].begin());
@@ -97,7 +101,8 @@ void Warehouse::throwOld(const int today) {
     Control extra(thrown, 2);
 }
 
-void Warehouse::dailyOrders(int today, Manager* current) {
+
+void Warehouse::dailyOrders(int today, Manager* current, Bookkeeping* stats) {
     Application::clearNeeds();
     std::vector<Application*> orders(numShops_, nullptr);
     std::vector<Application*> gone(numShops_, {});
@@ -110,17 +115,14 @@ void Warehouse::dailyOrders(int today, Manager* current) {
     std::set<std::string> full;
     std::unordered_map<std::string, int> needManager;
     for (std::pair<const std::string, int>& i : Application::needs_) {
-        int exists = Product::catalogue[i.first]->calcAmount(amountExists_[i.first]);
-        if (i.second <= exists) {
-            full.insert(i.first);
-        } else {
-            needManager[i.first] = exists;
-        }
+        int exists = amountExists_[i.first];
+        needManager[i.first] = exists;
     }
 
-    std::vector<Report *> rules = current->giveGoods(orders, shops_, needManager);  // 139 is here
-
-
+    std::vector<Report *> rules = current->giveGoods(orders, shops_, needManager);
+    Control* gener = new Control(rules);
+    sendFood(gener, today);
+    stats->daySold(rules, gener, today);
 }
 
 
@@ -134,6 +136,7 @@ std::unordered_map<std::string, int> &Warehouse::getAmountExist() {
 
 void Warehouse::orderFromSupplier(std::string name, int num, int today) {
     Pack* adding = new Pack(*Product::catalogue[name], num, today + 1 + rand() % 5);
+    amountOrdered_[name] += num;
     addContainer(adding);
 }
 
@@ -143,6 +146,12 @@ std::unordered_map<std::string, int> &Warehouse::getAmountOrdered() {
 
 std::unordered_map<std::string, int> &Warehouse::getAmountMax() {
     return amountMax_;
+}
+
+void Warehouse::sendFood(Control * sold, int today) {
+    for (const std::pair<const std::string, int>& i : sold->getData()) {
+        deletePacks(i.second, i.first, 1);
+    }
 }
 
 

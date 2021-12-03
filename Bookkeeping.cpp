@@ -7,3 +7,7 @@
 Bookkeeping::Bookkeeping(int days):
     days_(days){
 }
+
+void Bookkeeping::daySold(std::vector<Report *> &sold, Control *gener, int today) {
+
+}

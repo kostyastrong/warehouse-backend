@@ -37,8 +37,10 @@ private:
 
 class Control: public Report {
 public:
+    Control(std::vector<Report*>& data, int type=0);
     Control(std::unordered_map<std::string, int>& data, int type);
     int getType() const;
+    void setType(int);
     // t = 0 for sold, 1 for rotten food, 2 for extra food
 private:
     int type_;

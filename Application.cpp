@@ -52,3 +52,17 @@ int Control::getType() const {
 Control::Control(std::unordered_map<std::string, int> &data, int type):
 Report(data),
 type_(type){}
+
+void Control::setType(int a) {
+    type_ = a;
+}
+
+Control::Control(std::vector<Report *> &data, int type): type_(type){
+    std::unordered_map<std::string, int> order;
+    for (Report* i : data) {
+        for (const std::pair<const std::string, int>& j : i->getData()) {
+            order[j.first] += j.second;
+        }
+    }
+    data_ = std::move(order);
+}

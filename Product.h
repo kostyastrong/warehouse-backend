@@ -19,7 +19,7 @@ public:
 
     [[nodiscard]] virtual int price() const;
 
-    [[nodiscard]] const std::string& getName() const;
+    [[nodiscard]] std::string getName() const;  // it returns NONE, why?
 
     [[nodiscard]] int getLife() const;
 
@@ -33,7 +33,7 @@ public:
     static void setCatalogue(int numTypes, int sz);
     int inPackage();
 
-    int calcAmount(int) const;
+    [[nodiscard]] int calcAmount(int) const;
 
     static std::vector<std::string> names;
     static std::unordered_map<std::string, Product*> catalogue;
@@ -54,7 +54,7 @@ protected:
 class Pack: public Product {
 public:
     static bool sortByComing(const Pack& a, const Pack& b);
-    Pack(const Product& a, int packages, int today);
+    Pack(Product& a, int packages, int today);
     [[nodiscard]] int dateCame() const;
     bool isExpired(int);
     [[nodiscard]] int untilExpDate(int) const;
@@ -62,13 +62,12 @@ public:
     [[nodiscard]] int getPackages() const;
     int reducePackages(int);
     friend bool operator<(const Pack& a, const Pack& b);
-    int calcAmount() const;
+    [[nodiscard]] int calcAmount() const;
 
 private:
     int packages_ = 0;
     int expDate_ = -1;  // expiration date
     int discount_ = 0;
-    std::string name_;
 };
 
 #endif //WAREHOUSE_PRODUCT_H
