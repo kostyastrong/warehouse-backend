@@ -12,12 +12,11 @@ std::vector<Report*> StupidManager::giveGoods(const std::vector<Application *> &
     for (Application* i : orders) {
         std::unordered_map<std::string, int> order = i->getData();
         for (const std::pair<const std::string, int>& j : order) {
-            if (needs[j.first] != 0) {
-                int num = std::min(static_cast<int>(ceil(static_cast<double>(needs[j.first])) / Product::catalogue[j.first]->inPackage()),
-                                          j.second);
-                order[j.first] = num;
-                needs[j.first] -= num;
-            }
+            if (j.second == 0) continue;
+            int num = std::min(needs[j.first],
+                               j.second);
+            order[j.first] = num;
+            needs[j.first] -= num;
         }
         ret[ind] = new Report(order);
         ++ind;
@@ -38,5 +37,5 @@ void StupidManager::orderGoods(Warehouse *& warehouse, int today) {
 }
 
 void StupidManager::makeSales(Warehouse *& warehouse, int today) {
-    // he doesn't do any sales:)
+    // he doesn't do any sales, he sells old food:)
 }

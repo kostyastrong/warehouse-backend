@@ -19,7 +19,7 @@ int Product::price() const {
     return price_;
 }
 
-const std::string& Product::getName() const{
+std::string Product::getName() const{
     return name_;
 }
 
@@ -74,10 +74,16 @@ bool Pack::isExpired(int current) {
 }
 
 
-Pack::Pack(const Product& a, int packages, int today):
-    name_(std::move(a.getName())), // mok
+Pack::Pack(Product& a, int packages, int today):
     packages_(packages),
-    expDate_(a.getLife() + today){}
+    expDate_(a.getLife() + today){
+    inPackage_ = a.inPackage();
+    shelfLife_ = a.getLife();
+    price_ = a.price();
+    name_ = a.getName();
+    //Product* prt = static_cast<Product*>(this);
+    //*prt = *a;
+}
 
 int Pack::dateCame() const {
     return expDate_ - shelfLife_;
@@ -163,8 +169,9 @@ int Product::inPackage() {
     return inPackage_;
 }
 
-int Product::calcAmount(int a) const {
-    return a * Product::catalogue[name_]->inPackage();
+int Product::calcAmount(int a) const {  // how to name correctly?
+    int inPack = Product::catalogue[name_]->inPackage();
+    return (a + inPack - 1) / inPack;
 }
 
 

@@ -26,6 +26,7 @@ public:
     void dailyOrders(int today, Manager* current);
     void throwOld(int today);
     void orderFromSupplier(std::string name, int num, int today);
+    void sendFood(Control*, int today);
 
     std::unordered_map<std::string, int>& getAmountExist();
     std::unordered_map<std::string, int>& getAmountMax();
@@ -40,7 +41,7 @@ private:
     void setStorage(int amSize = 15);
     void fillStorage(int def = 5);
     void createShops(int numShops);
-    void throwExtra(int left, const std::string& name);
+    void deletePacks(int left, const std::string& name, const bool sold=false);
     void addContainer(Pack*& added);
     int addPack(Pack* adding);
     std::set<Pack*, sortByComing> containers_;

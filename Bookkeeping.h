@@ -9,13 +9,15 @@
 class Bookkeeping {
 public:
     explicit Bookkeeping(int days);
+    void daySold(std::vector<Report*>& sold, Control* gener, int today);
 
 private:
     int days_;
     std::vector<Application*> applications_;
-    std::unordered_map<std::string, int> thrown;
-    std::unordered_map<std::string, int> extra;
-    std::unordered_map<std::string, int> sold;
+    int vizual_[60][30][30];  // days, shops, types of goods
+    std::unordered_map<std::string, int> thrown_;
+    std::unordered_map<std::string, int> extra_;
+    std::unordered_map<std::string, int> sold_;
 };
 
 
