@@ -24,7 +24,7 @@ int main() {
     std::cout << 0<< std::endl;
 
     warehouse = new Warehouse(numTypes, shops, 3);
-    statistics = new Bookkeeping(days);
+    statistics = new Bookkeeping(days, shops, numTypes);
 
     for (int day = 1; day <= days; ++day) {
         bool buy = days - day > 1;
@@ -33,6 +33,7 @@ int main() {
             stupid->orderGoods(warehouse, day);
         }
     }
+    statistics->csvVisual();
     std::cout << "tupak's died.";
     return 0;
 }
