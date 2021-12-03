@@ -102,7 +102,7 @@ void Warehouse::throwOld(const int today) {
 }
 
 
-void Warehouse::dailyOrders(int today, Manager* current) {
+void Warehouse::dailyOrders(int today, Manager* current, Bookkeeping* stats) {
     Application::clearNeeds();
     std::vector<Application*> orders(numShops_, nullptr);
     std::vector<Application*> gone(numShops_, {});
@@ -120,8 +120,9 @@ void Warehouse::dailyOrders(int today, Manager* current) {
     }
 
     std::vector<Report *> rules = current->giveGoods(orders, shops_, needManager);
-    Control* sold = new Control(rules);
-    sendFood(sold, today);
+    Control* gener = new Control(rules);
+    sendFood(gener, today);
+    stats->daySold(rules, gener, today);
 }
 
 

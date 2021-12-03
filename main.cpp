@@ -12,15 +12,12 @@ Bookkeeping* statistics = nullptr;
 void newDay(int today) {
     Application::clearNeeds();
     warehouse->throwOld(today);
-    warehouse->dailyOrders(today, stupid);
+    warehouse->dailyOrders(today, stupid, statistics);
     warehouse->checkContainers(today, statistics);
 }
 
 int main() {
-#ifdef STRONG
     freopen("input.txt", "r", stdin);
-#endif
-
     int numTypes, shops, days;
     std::cin >> numTypes >> shops >> days;
 

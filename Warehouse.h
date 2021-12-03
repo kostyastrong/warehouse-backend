@@ -23,7 +23,7 @@ class Warehouse {
 public:
     Warehouse(int numTypes, int numShops, int sizeCateg = 3, int amsize = 15, int def = 5);
     void checkContainers(int today, const Bookkeeping* taker);
-    void dailyOrders(int today, Manager* current);
+    void dailyOrders(int today, Manager* current, Bookkeeping* stats);
     void throwOld(int today);
     void orderFromSupplier(std::string name, int num, int today);
     void sendFood(Control*, int today);
