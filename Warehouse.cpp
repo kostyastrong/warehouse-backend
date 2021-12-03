@@ -54,6 +54,7 @@ void Warehouse::checkContainers(const int today, const Bookkeeping* taker) {
         amountOrdered_[tmp->getName()] -= tmp->getPackages();
         if (inBin > 0) thrown[tmp->getName()] = inBin;
         containers_.erase(containers_.begin());
+        byCategory_[tmp->getName()].insert(tmp);
     }
     Control extra(thrown, 2);
 }
