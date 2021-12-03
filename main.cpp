@@ -14,12 +14,14 @@ void newDay(int today) {
     warehouse->throwOld(today);
     warehouse->dailyOrders(today, stupid, statistics);
     warehouse->checkContainers(today, statistics);
+    std::cout << today<< std::endl;
 }
 
 int main() {
     freopen("input.txt", "r", stdin);
     int numTypes, shops, days;
     std::cin >> numTypes >> shops >> days;
+    std::cout << 0<< std::endl;
 
     warehouse = new Warehouse(numTypes, shops, 3);
     statistics = new Bookkeeping(days);
