@@ -52,6 +52,7 @@ void Warehouse::checkContainers(const int today, const Bookkeeping* taker) {
         Pack* tmp = *containers_.begin();
         int inBin = addPack(tmp);
         amountOrdered_[tmp->getName()] -= tmp->getPackages();
+        //amountExists_[tmp->getName()] += tmp->getPackages() - inBin;
         if (inBin > 0) thrown[tmp->getName()] = inBin;
         containers_.erase(containers_.begin());
         byCategory_[tmp->getName()].insert(tmp);
@@ -72,6 +73,7 @@ int Warehouse::addPack(Pack *fresh) {
 
 void Warehouse::deletePacks(int left, const std::string& name, const bool sold) {
     std::unordered_map<std::string, int> cost;
+    //amountExists_[name] -= left;
     while (left > 0) {
         Pack* getOut = nullptr;
         try {
@@ -80,8 +82,16 @@ void Warehouse::deletePacks(int left, const std::string& name, const bool sold) 
             std::cout << "You've just said you have extra goods,\nbut you don't have any of: " << name << '\n';
             return;
         }
+
         int inBinLocal = getOut->reducePackages(left);
         amountExists_[name] -= inBinLocal;
+        if (sold) {
+            money_[today_] += inBinLocal * getOut->price() * (100 - getOut->discount()) / 100;
+            discountLoss[today_] += inBinLocal * getOut->price() * getOut->discount();
+            sold_[today_] += getOut->inPackage() * getOut->getPackages();
+        } else {
+            loss_[today_] += inBinLocal * getOut->price();
+        }
         left -= inBinLocal;
         if (getOut->getPackages() == 0) {
             byCategory_[name].erase(byCategory_[name].begin());
@@ -103,7 +113,7 @@ void Warehouse::throwOld(const int today) {
 }
 
 
-void Warehouse::dailyOrders(int today, Manager* current, Bookkeeping* stats) {
+void Warehouse::dailyOrders(int today, Manager* current) {
     Application::clearNeeds();
     std::vector<Application*> orders(numShops_, nullptr);
     std::vector<Application*> gone(numShops_, {});
@@ -123,7 +133,6 @@ void Warehouse::dailyOrders(int today, Manager* current, Bookkeeping* stats) {
     std::vector<Report *> rules = current->giveGoods(orders, shops_, needManager);
     Control* gener = new Control(rules);
     sendFood(gener, today);
-    stats->daySold(rules, gener, today);
 }
 
 

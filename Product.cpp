@@ -109,6 +109,10 @@ int Pack::calcAmount() const {
     return inPackage_ * packages_;
 }
 
+int Pack::discount() const {
+    return discount_;
+}
+
 void Product::setCatalogue(int numTypes, int sz) {
     int INF = 1000000;
     std::vector<std::pair<std::string, Product*>> source = {

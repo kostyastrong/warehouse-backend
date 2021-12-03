@@ -6,6 +6,9 @@
 #define WAREHOUSE_BOOKKEEPING_H
 #include "Application.h"
 #include <unordered_map>
+#include "Warehouse.h"
+
+class Warehouse;
 
 class Bookkeeping {
 public:
@@ -14,16 +17,15 @@ public:
     void fillVisualZeros(int sz = 90*60*50);
     void csvVisual();
     void daySold(std::vector<Report*>& sold, Control* gener, int today);
+    void csvGraphics(Warehouse* giver);
+
 
 private:
     int days_, shops_, goods_;
-    std::vector<Application*> applications_;
     std::unordered_map<std::string, int> indexes_;
     std::string revIndexes_[50];
     int visual_[90*60][50];  // days*shops, types of goods
-    std::unordered_map<std::string, int> thrown_;
-    std::unordered_map<std::string, int> extra_;
-    std::unordered_map<std::string, int> sold_;
+
 };
 
 

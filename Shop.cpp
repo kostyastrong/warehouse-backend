@@ -18,7 +18,7 @@ Application* Shop::order(int choose) const {
 
     std::unordered_map<std::string, int> data;
     for (const auto& i : Product::catalogue) {
-        int num = rand() % size_;
+        int num = rand() % (size_ + 8);
         data[i.first] = i.second->calcAmount(num);
         if (j == choose) break;
         ++j;

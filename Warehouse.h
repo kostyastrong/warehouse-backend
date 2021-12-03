@@ -12,6 +12,7 @@
 #include "set"
 #include "Manager.h"
 class Manager;
+class Bookkeeping;
 
 struct sortByComing {
     bool operator() (const Pack* x, const Pack* y) const {
@@ -23,16 +24,23 @@ class Warehouse {
 public:
     Warehouse(int numTypes, int numShops, int sizeCateg = 3, int amsize = 15, int def = 5);
     void checkContainers(int today, const Bookkeeping* taker);
-    void dailyOrders(int today, Manager* current, Bookkeeping* stats);
+    void dailyOrders(int today, Manager* current);
     void throwOld(int today);
     void orderFromSupplier(std::string name, int num, int today);
     void sendFood(Control*, int today);
+
+    int today_ = 1;
 
     std::unordered_map<std::string, int>& getAmountExist();
     std::unordered_map<std::string, int>& getAmountMax();
     std::unordered_map<std::string, int>& getAmountOrdered();
 
     static std::set<Pack*> bestDiscounts_;
+
+    std::vector<int> sold_ = std::vector<int>(60);
+    std::vector<int> loss_ = std::vector<int>(60);
+    std::vector<int> money_ = std::vector<int>(60);
+    std::vector<int> discountLoss = std::vector<int>(60);
 
 private:
     int size_;  // how many goods there are
@@ -51,6 +59,8 @@ private:
     std::unordered_map<std::string, int> amountOrdered_;
     std::unordered_map<std::string, int> amountExists_;
     std::unordered_map<std::string, int> amountMax_;
+
+
 };
 
 
