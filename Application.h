@@ -41,7 +41,7 @@ public:
     Control(std::unordered_map<std::string, int>& data, int type);
     int getType() const;
     void setType(int);
-    // t = 0 for sold, 1 for rotten food, 2 for extra food
+    // t = 0 for sold, 1 for rotten food, 2 for extra food, 3 for discount loss
 private:
     int type_;
 };

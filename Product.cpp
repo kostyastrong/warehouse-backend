@@ -62,7 +62,7 @@ Product::Product(Product&& a) noexcept {
 }
 
 int Pack::price() const {
-    return price_ * discount_ / 100;
+    return price_ * (100 - discount_) / 100;
 }
 
 int Pack::untilExpDate(int current) const {
@@ -107,6 +107,10 @@ int Pack::reducePackages(int num) {
 
 int Pack::calcAmount() const {
     return inPackage_ * packages_;
+}
+
+int Pack::discount() const {
+    return discount_;
 }
 
 void Product::setCatalogue(int numTypes, int sz) {

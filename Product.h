@@ -60,11 +60,13 @@ public:
     [[nodiscard]] int untilExpDate(int) const;
     [[nodiscard]] int price() const override;
     [[nodiscard]] int getPackages() const;
+    [[nodiscard]] int discount() const;
     int reducePackages(int);
     friend bool operator<(const Pack& a, const Pack& b);
     [[nodiscard]] int calcAmount() const;
 
 private:
+    int price_ = 0;
     int packages_ = 0;
     int expDate_ = -1;  // expiration date
     int discount_ = 0;
