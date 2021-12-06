@@ -86,7 +86,7 @@ void Warehouse::deletePacks(int left, const std::string& name, const bool sold) 
         int inBinLocal = getOut->reducePackages(left);
         amountExists_[name] -= inBinLocal;
         if (sold) {
-            money_[today_] += inBinLocal * getOut->price() * (100 - getOut->discount()) / 100;
+            money_[today_] += inBinLocal * getOut->price();
             discountLoss[today_] += inBinLocal * getOut->price() * getOut->discount();
             sold_[today_] += getOut->inPackage() * getOut->getPackages();
         } else {
@@ -113,7 +113,7 @@ void Warehouse::throwOld(const int today) {
 }
 
 
-void Warehouse::dailyOrders(int today, Manager* current) {
+void Warehouse::dailyOrders(int today, Manager* current, Bookkeeping* stats) {
     Application::clearNeeds();
     std::vector<Application*> orders(numShops_, nullptr);
     std::vector<Application*> gone(numShops_, {});
@@ -133,6 +133,7 @@ void Warehouse::dailyOrders(int today, Manager* current) {
     std::vector<Report *> rules = current->giveGoods(orders, shops_, needManager);
     Control* gener = new Control(rules);
     sendFood(gener, today);
+    stats->daySold(rules, gener, today);
 }
 
 

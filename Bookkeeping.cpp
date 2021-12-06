@@ -69,11 +69,11 @@ void Bookkeeping::csvVisual() {
 void Bookkeeping::csvGraphics(Warehouse* giver) {
     std::ofstream visual;
     visual.open("data.csv");
-    visual << "sold,loss,money,discountLoss,day\n";
+    visual << "sold,loss,discountLoss,day\n";
     for (int i = 0; i < days_; ++i) {
         visual << std::to_string(giver->sold_[i]) << ',';
         visual << std::to_string(giver->loss_[i]) << ',';
-        visual << std::to_string(giver->money_[i]) << ',';
+        //visual << std::to_string(giver->money_[i]) << ',';
         visual << std::to_string(giver->discountLoss[i]) << ',' << i <<'\n';
     }
     visual.close();

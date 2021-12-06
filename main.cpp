@@ -13,7 +13,7 @@ void newDay(int today) {
     Application::clearNeeds();
     warehouse->today_ = today;
     warehouse->throwOld(today);
-    warehouse->dailyOrders(today, stupid);
+    warehouse->dailyOrders(today, stupid, statistics);
     warehouse->checkContainers(today, statistics);
     std::cout << today<< std::endl;
 }
@@ -24,7 +24,7 @@ int main() {
     std::cin >> numTypes >> shops >> days;
     std::cout << 0<< std::endl;
 
-    warehouse = new Warehouse(numTypes, shops, 3, 10, 10);
+    warehouse = new Warehouse(numTypes, shops, 6);
     statistics = new Bookkeeping(days, shops, numTypes);
 
     for (int day = 1; day <= days; ++day) {

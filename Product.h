@@ -66,6 +66,7 @@ public:
     [[nodiscard]] int calcAmount() const;
 
 private:
+    int price_ = 0;
     int packages_ = 0;
     int expDate_ = -1;  // expiration date
     int discount_ = 0;
